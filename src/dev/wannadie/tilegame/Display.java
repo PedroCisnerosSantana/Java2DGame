@@ -34,6 +34,13 @@ public class Display {
 	canvas.setPreferredSize(new Dimension(width, height));
 	canvas.setMaximumSize(new Dimension(width, height));
 	canvas.setMinimumSize(new Dimension(width, height));
+	
+	frame.add(canvas);
+	frame.pack();
+  }
+  
+  public Canvas getCanvas() {
+	return canvas;
   }
 
 }

@@ -46,7 +46,7 @@ public class Game implements Runnable {
 	  return;
 	} else {
 	  running = true;
-	  thread = new Thread();
+	  thread = new Thread(this);
 	  thread.start(); 
 	}
   }
