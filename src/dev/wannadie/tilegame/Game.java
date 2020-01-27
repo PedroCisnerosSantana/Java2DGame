@@ -1,5 +1,8 @@
 package dev.wannadie.tilegame;
 
+import java.awt.Graphics;
+import java.awt.image.BufferStrategy;
+
 public class Game implements Runnable {
 
   private Display display;
@@ -9,6 +12,9 @@ public class Game implements Runnable {
   public String title;
   public int width;
   public int height;
+  
+  private BufferStrategy bs;
+  private Graphics g;
 
   private Thread thread;
 
@@ -27,7 +33,18 @@ public class Game implements Runnable {
   }
 
   private void render() {
-
+	bs = display.getCanvas().getBufferStrategy();
+	if (bs == null) {
+	  display.getCanvas().createBufferStrategy(3);
+	  return;
+	}
+	
+	g = bs.getDrawGraphics();
+	
+	g.clearRect(0, 0, width, height);
+	
+	bs.show();
+	g.dispose();
   }
 
   public void run() {
